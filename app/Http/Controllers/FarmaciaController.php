@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class FarmaciaController extends Controller
-{
+{   
     /**
      * Lista todas las farmacias creadas
      * Busca en la base de datos todos los datos
