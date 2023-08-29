@@ -27,3 +27,4 @@ Route::put('/farmacias', [FarmaciaController::class, 'search']);
 Route::post('/farmacias', [FarmaciaController::class, 'insert']);
 Route::post('/farmacias{farmacia}', [FarmaciaController::class, 'update']);
 Route::get('/farmacias/{farmacia}', [FarmaciaController::class, 'get']);
+Route::delete('/farmacias/{farmacia}', [FarmaciaController::class, 'delete']);

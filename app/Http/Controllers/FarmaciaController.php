@@ -35,7 +35,7 @@ class FarmaciaController extends Controller
      * @since 1.0
      * @return \Illuminate\Routing\ResponseFactory
      *      
-     * @param Request[nombre, direccion, latitud, longitud]
+     * @param \Illuminate\Http\Request[nombre, direccion, latitud, longitud]
      *  
      */
     public function insert(Request $request)
@@ -55,7 +55,7 @@ class FarmaciaController extends Controller
         }
 
         //Creo el registro en la base de datos
-        $farmacia = Farmacia::create($validatedData);
+        $farmacia = Farmacia::create($validator->validated());
         
         //Devuelvo el registro creado a pantalla en formato JSON
         return response()->json($farmacia, 200);
@@ -70,8 +70,8 @@ class FarmaciaController extends Controller
      * @since 1.0
      * @return \Illuminate\Routing\ResponseFactory
      * 
-     * @param Request[nombre, direccion, latitud, longitud]
-     * @param Farmacia::id
+     * @param \Illuminate\Http\Request[nombre, direccion, latitud, longitud]
+     * @param \App\Models\Farmacia::id
      *      
      */
     public function update(Request $request, Farmacia $farmacia)
@@ -91,7 +91,7 @@ class FarmaciaController extends Controller
         }
         
         //Actualizo el registro en la base de datos
-        $farmacia->update($validatedData);
+        $farmacia->update($validator->validated());
 
         //Devuelvo el registro modificado a pantalla en formato JSON
         return response()->json($farmacia, 200);
@@ -106,12 +106,33 @@ class FarmaciaController extends Controller
      * @since 1.0
      * @return \Illuminate\Routing\ResponseFactory
      * 
-     * @param Farmacia::id
+     * @param \App\Models\Farmacia::id
      *      
      */
     public function get(Farmacia $farmacia)
     {
         //Devuelvo el registro solicitado a pantalla en formato JSON
+        return response()->json($farmacia, 200);
+    }
+
+    /**
+     * Elimina una farmacia de la base de datos
+     * 
+     * 
+     * @method DELETE
+     * @author Ernesto Arias
+     * @since 1.0
+     * @return \Illuminate\Routing\ResponseFactory
+     * 
+     * @param \App\Models\Farmacia::id
+     *      
+     */
+    public function delete(Farmacia $farmacia)
+    {
+        //Elimino el registro de la base de datos
+        $farmacia->delete();        
+
+        //Devuelvo el registro eliminado a pantalla en formato JSON
         return response()->json($farmacia, 200);
     }
 
@@ -127,7 +148,7 @@ class FarmaciaController extends Controller
      * @since 1.0
      * @return \Illuminate\Routing\ResponseFactory
      * 
-     * @param Request[latitud, longitud]
+     * @param \Illuminate\Http\Request[latitud, longitud]
      *      
      */
     public function search(Request $request)

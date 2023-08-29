@@ -65,6 +65,12 @@ Esta llamada actualiza una farmacia en la base de datos
 curl -X POST http://localhost/api/farmacias/5 -d 'nombre=PHARMACY San Martin&direccion=B1604DEB Gran Buenos Aires, Gral. José de San Martín 3257, B1604DEB Florida, Provincia de Buenos Aires&latitud=-34.53174029238471&longitud=-58.50503227409527'
 ```
 
+*Elimino una farmacia:*
+Esta llamada, elimina de la base de datos de una farmacia segun su ID
+``` r
+**curl -X DELETE http://localhost/api/farmacias/5**
+```
+
 *Buscar farmacias por cercania*
 Esta llamada busca las farmacias mas cercadas, en funcion de una latitud y longitud dada
 ``` r
@@ -72,7 +78,7 @@ curl -X PUT http://localhost/api/farmacias/ -d 'latitud=-34.53174029238471&longi
 ```
 
 
-## Casos de uso
+## Test unitarios
 Se definieron 3 casos de uso:
 
 # test_farmacia_insert_ok
